@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,500;1,200;1,300&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* navigation */
+
+.navbar {
+    background: #ffd5cd;
+    min-height: 8vh;
+}
+.navbar-brand {
+    background: #8675a9 ;
+    border-radius: 3px;
+}
+body > div > nav > a {
+    color: #fff !important;
+    padding: 7px 13px;
+}
+.auth a {
+    background: #c3aed6;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+.auth a:hover {
+    text-decoration: none;
+}
+
+/* sign up  */
+section.signup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 92vh;
+    background: #f2fbfe;
+}
+.signup form {
+    min-width: 400px;
+    background: #c3aed6;
+    border-radius: 3px;
+}
+.signup form .form-group {
+    padding: 0 50px;
+}
+.signup form button {
+    margin: 20px;
+}

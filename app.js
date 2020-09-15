@@ -12,7 +12,7 @@ mongoose.connect(process.env.MONGO_SECRET, {useNewUrlParser: true, useUnifiedTop
 
 //get
 app.get('/', (req, res) => {
-    res.render('signup');
+    res.render('home', { title: "Home"});
 });
 //post
 
