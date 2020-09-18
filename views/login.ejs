@@ -2,18 +2,48 @@
 <body>
     <%- include('partials/nav'); %>
     <section class="login">
-        <form>
+        <form action="/login" method="POST">
             <div class="form-group">
               <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
             </div>
+            <div class="email-error"></div>
             <div class="form-group">
               <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1">
+              <input type="password" class="form-control" id="exampleInputPassword1" name="password">
             </div>
+            <div class="password-error"></div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
     </section>
+    <script>
+      const form = document.querySelector('form');
+      const emailErr = document.querySelector('.email-error');
+      const passwordErr = document.querySelector('.password-error');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = form.email.value;
+        const password = form.password.value;
+        try {
+          const res =  await fetch('/login',{
+            method: "POST",
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ email, password })
+          })
+          let result = await res.json();
+          if(result.user) {
+            window.location.href = "/"
+          } else {
+          const er = result.error;
+          emailErr.textContent = er.email;
+          passwordErr.textContent = er.password;
+          }
+        } catch(err) {
+          console.log(err)
+        }
+      })
+    </script>
 
     <%- include('partials/bootstrap'); %>
 </body>

@@ -7,15 +7,18 @@
               <label for="exampleInputname1">Full name</label>
               <input type="text" class="form-control" id="exampleInputname1" name = "name">
             </div>
+            <div class="name-error"></div>
             <div class="form-group">
               <label for="exampleInputEmail1">Email address</label>
               <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
               <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
+            <div class="email-error"></div>
             <div class="form-group">
               <label for="exampleInputPassword1">Password</label>
               <input type="password" class="form-control" id="exampleInputPassword1" name="password">
             </div>
+            <div class="password-error"></div>
             <div class="form-group form-check">
               <input type="checkbox" class="form-check-input" id="exampleCheck1">
               <label class="form-check-label" for="exampleCheck1"><small>Check me out</small></label>
@@ -27,6 +30,9 @@
     <%- include('partials/bootstrap'); %>
     <script>
       const form = document.querySelector('form');
+      const nameErr = document.querySelector('.name-error');
+      const emailErr = document.querySelector('.email-error');
+      const passwordErr = document.querySelector('.password-error');
 
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -36,16 +42,21 @@
         try {
           const res =  await fetch('/signup',{
             method: "POST",
-            headers: {
-              'Content-Type': 'application/json'
-            },
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({ name, email, password })
           })
           let result = await res.json();
+          if(result.user) {
+            window.location.href = "/"
+          } else {
+          const er = result.showErr;
+          nameErr.textContent = er.name;
+          emailErr.textContent = er.email;
+          passwordErr.textContent = er.password;
+          }
         } catch(err) {
-          console.log(err);
+          console.log(err)
         }
-
       })
     </script>
 </body>
