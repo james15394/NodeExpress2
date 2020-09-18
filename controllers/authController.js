@@ -24,9 +24,15 @@ const handlingErr = (err) => {
     }
     return error;
 }
+const maxAge = 15 * 60;
 //jwt sign
-const jwtSign = (userId) => {
-    return jwt.sign({ userId }, process.env.ACCESS_TOKEN)
+const jwtSign = userId => {
+    return jwt.sign({ userId }, process.env.ACCESS_TOKEN, { expiresIn: maxAge })
+}
+//refresh token
+
+const refreshToken = userId => {
+    return jwt.sign({ userId }, process.env.REFRESH_TOKEN, { expiresIn: 7 * 24 * 60 * 60 })
 }
 
 module.exports.signup_get = (req, res) => {
