@@ -1,20 +1,35 @@
 <div class="nav-sec">
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="#">BOOK TUNNEL</a>
+        <a class="navbar-brand" href="/">BOOK TUNNEL</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-link" href="#">Books</a>
+            <div id="marker"></div>
+            <a class="nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/booklist">Books</a>
             <a class="nav-link" href="#">Store and Events</a>
+            <a class="nav-link" href="/login" >Log in</a>
+            <a class="nav-link" href="/logout" >Log out</a>
+            <a class="nav-link" href="/signup" >Sign up</a>
           </div>
         </div>
-        <div class="auth">
-          <a href="#" class = "login">Log in</a>
-          <a href="#" class = "logout">Log out</a>
-          <a href="#" class = "signup">Sign up</a>
-        </div>
-      </nav>
+    </nav>
 </div>
+<script>
+  const marker = document.querySelector('#marker');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const mark1 = (e) => {
+    marker.style.left = e.offsetLeft + "px";
+    marker.style.width = e.offsetWidth + "px";
+    marker.style.height = e.offsetHeight + "px";
+    marker.style.top = e.offsetTop+ "px";
+  }
+
+      navLinks.forEach((link) => {
+        link.addEventListener('mouseover', (e) => {
+          mark1(e.target);
+        })
+      })
+</script>

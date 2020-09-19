@@ -4,29 +4,55 @@
     padding: 0;
     font-family: 'Poppins', sans-serif;
 }
-
 /* navigation */
-
+.nav-sec {
+    position: fixed;
+    width: 100%;
+    z-index: 100000;
+}
 .navbar {
     background: #ffd5cd;
     min-height: 8vh;
+}
+.navbar-nav {
+    position: relative;
+}
+.nav-link {
+    position: relative;
+    padding: 8px 20px !important;
+}
+#marker {
+    position: absolute;
+    height: 4px;
+    background: #ccc4dc;
+    width: 0;
+    left:0;
+    bottom: 0;
+    transition: 0.5s;
+    border-radius: 3px;
 }
 .navbar-brand {
     background: #8675a9 ;
     border-radius: 3px;
 }
-body > div > nav > a {
-    color: #fff !important;
-    padding: 7px 13px;
+.navbar-expand-lg .navbar-collapse {
+    justify-content: flex-end;
 }
-.auth a {
-    background: #c3aed6;
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 3px;
+.navbar-brand { 
+    padding: 10px 20px;
 }
-.auth a:hover {
-    text-decoration: none;
+.navbar-expand-lg {
+    padding: 0 100px !important;
+}
+@media (max-width: 992px) {
+    .navbar-expand-lg {
+        padding: 10px 30px !important;
+    }
+}
+@media (max-width: 1095px) {
+    .nav-link {
+        padding: 8px 10px !important;
+    }
 }
 
 /* sign up  */
@@ -47,4 +73,61 @@ section.signup {
 }
 .signup form button {
     margin: 20px;
+}
+
+/*  Home */
+
+.banner {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url(./img/bg.jpg);
+    background-size: cover;
+    background-position: bottom;
+}
+
+.blog {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.blog-content {
+    padding: 50px 0;
+    width: 70%;
+}
+.banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.banner .cloud {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+.banner .cloud img {
+    position: absolute;
+    bottom: 0;
+    max-width: 100%;
+    animation: move calc(8s * var(--i)) linear infinite;
+}
+@keyframes move {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    
+
+    }
+}
+.banner h2 {
+    color: #decdc3;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 8rem;
 }
