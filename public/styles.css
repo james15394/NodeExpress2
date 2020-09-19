@@ -55,26 +55,6 @@
     }
 }
 
-/* sign up  */
-section.signup {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 92vh;
-    background: #f2fbfe;
-}
-.signup form {
-    min-width: 400px;
-    background: #c3aed6;
-    border-radius: 3px;
-}
-.signup form .form-group {
-    padding: 0 50px;
-}
-.signup form button {
-    margin: 20px;
-}
-
 /*  Home */
 
 .banner {
@@ -130,4 +110,60 @@ section.signup {
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 8rem;
+}
+/* Log in & Sign up*/
+.login, .signup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(-23deg, #03a9f4 0%, #3a78b7 50%, #262626 50%, #607d8b 100%);
+    animation: animate 10s linear infinite;
+}
+@keyframes animate {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+.login form, .signup form {
+    color: #fff;
+    position: relative;
+    width: 20%;
+    padding: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    min-width: 400px;
+    box-shadow: 0 5px 35px rgba(0, 0, 0, 0.2)
+}
+.login form::after, .signup form::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    pointer-events: none;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.1) 15%, transparent 50%, transparent 85%, rgba(255, 255, 255, 0.3) 100%);
+}
+
+.login form input, .signup form input {
+    background: transparent;
+    outline: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: inset 0 0 25px rgba(255, 255, 255, 0.2);
+}
+.login form input:focus, .signup form input:focus {
+    background: transparent;
+    
+}
+.name-error, .password-error, .email-error {
+    color: #f56a79;
+    font-size: 1rem;
+}
+.login button, .signup button {
+    background: #fff;
+    color: #000;
 }
